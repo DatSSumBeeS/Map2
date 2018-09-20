@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Lab 2</title>
+
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
+        integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+        crossorigin=""/>
+
+        <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
+        integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
+        crossorigin=""></script>
+
+    </head>
+
+    <body>
+        <div id="map" style="height: 500px"></div>
+
+        <script type="text/javascript">
+
+          var map = L.map('map', {
+              center: [41.9096726,-87.7868061],
+              zoom: 11,
+          });
+
+          L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+               attribution: '@ <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+               maxZoom: 12,
+               minZoom: 2,
+            }).addTo(map);
+            
+            var pizzaIcon = L.icon({
+    iconUrl: 'pizza.png', // url that links to the icon image file
+    iconSize:     [38, 38], // size of the icon image in pixels
+    iconAnchor:   [19, 19], // the top left corner of the icon will be aligned so that this point is at the marker's geographical location
+    popupAnchor:  [0, -10] // point from which the popup should open, relative to the iconAnchor
+});
+            var marker1 = L.marker([41.960577,-87.7548832],{icon: pizzaIcon}).addTo(map);
+            var marker2 = L.marker([41.9653745,-87.8667811],{icon: pizzaIcon}).addTo(map);
+            var marker3 = L.marker([41.8955461,-87.6860902],{icon: pizzaIcon}).addTo(map);
+
+            var pic1 = '<img src="https://upload.wikimedia.org/wikipedia/commons/d/d1/Pepperoni_pizza.jpg" alt="BONE" width="250">';
+            var pic2 = '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Spinach_pizza.jpg/1024px-Spinach_pizza.jpg" alt="BTWO" width="250">';
+            var pic3 = '<img src="https://upload.wikimedia.org/wikipedia/commons/0/07/Pizza_%2822%29.jpg" alt="BTRE" width="250">';
+
+            marker1.bindPopup('<p style="color:blue; font-weight:bold"> Bacci Spot One </p>' + pic1);
+            marker2.bindPopup('<p style="color:seagreen; font-weight:bold"> Bacci spot Two </p>' + pic2);
+            marker3.bindPopup('<p style="color:seagreen; font-weight:bold"> Bacci Spot Three </p>' + pic3);
+        </script>
+   </body>
+</html>
